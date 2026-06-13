@@ -339,12 +339,39 @@ function prevTestimonial() {
 }
 
 // Contact form handling
-function handleContactSubmit(e) {
+async function handleContactSubmit(e) {
     e.preventDefault();
     const name = document.getElementById('contact-name').value;
-    
-    showNotification(`Gracias ${name}, tu mensaje ha sido recibido de manera exitosa. Nos pondremos en contacto contigo en breve.`, 'success');
-    document.getElementById('contact-form').reset();
+    const phone = document.getElementById('contact-phone').value;
+    const email = document.getElementById('contact-email').value;
+    const message = document.getElementById('contact-message').value;
+
+    showNotification("Enviando tu mensaje...", "info");
+
+    try {
+        const res = await fetch("https://formsubmit.co/ajax/luisheinercastillo30@gmail.com", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify({
+                Nombre: name,
+                Celular: phone,
+                Email: email,
+                Mensaje: message
+            })
+        });
+
+        if (res.ok) {
+            showNotification(`Gracias ${name}, tu mensaje ha sido recibido de manera exitosa. Nos pondremos en contacto contigo en breve.`, 'success');
+            document.getElementById('contact-form').reset();
+        } else {
+            throw new Error();
+        }
+    } catch (err) {
+        showNotification("Hubo un problema al enviar tu mensaje. Por favor, contáctanos directamente a nuestro correo.", "error");
+    }
 }
 
 // Custom Premium Toast Notification
