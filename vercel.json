@@ -1,5 +1,8 @@
 {
   "version": 2,
   "outputDirectory": "ElArteDeHablar.Api/wwwroot",
-  "cleanUrls": true
+  "cleanUrls": true,
+  "framework": null,
+  "buildCommand": null,
+  "installCommand": null
 }
