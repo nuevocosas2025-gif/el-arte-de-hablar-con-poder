@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="ElArteDeHablar.Api/ElArteDeHablar.Api.csproj" />
+  <Project Path="ElArteDeHablar.Core/ElArteDeHablar.Core.csproj" />
+  <Project Path="ElArteDeHablar.Infrastructure/ElArteDeHablar.Infrastructure.csproj" />
+</Solution>

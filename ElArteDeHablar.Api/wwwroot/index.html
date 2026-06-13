@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Desarrolla el poder de tu voz en nuestra academia premium de oratoria. Aprende comunicación efectiva, control del miedo escénico y liderazgo ejecutivo.">
+    <meta name="keywords" content="oratoria, hablar en publico, miedo escenico, liderazgo, comunicacion efectiva, taller de oratoria, academia de oratoria">
+    <meta name="author" content="El Arte de Hablar con Poder">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="El Arte de Hablar con Poder | Academia Premium de Oratoria">
+    <meta property="og:description" content="Transforma tu futuro y desata tu liderazgo. Programa de oratoria de alto impacto con certificación incluida.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=1200&h=630&q=80">
+    <meta property="og:url" content="http://localhost:5000/">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="El Arte de Hablar con Poder">
+    <meta name="twitter:description" content="Aprende a hablar con seguridad, elocuencia e impacto. Clases prácticas y horarios flexibles.">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=1200&h=630&q=80">
+
+    <title>El Arte de Hablar con Poder | Academia Premium de Oratoria y Liderazgo</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandBlue: '#0A3D62',
+                        brandBlueLight: '#3C91E6',
+                        brandGold: '#F4B942',
+                        brandDark: '#2D3436'
+                    },
+                    fontFamily: {
+                        title: ['Montserrat', 'sans-serif'],
+                        body: ['Poppins', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Chart.js for Dashboards -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Schema.json LD for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "EducationalOrganization",
+      "name": "El Arte de Hablar con Poder",
+      "url": "http://localhost:5000",
+      "logo": "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=150&h=150&q=80",
+      "description": "Academia Premium de Oratoria y Comunicación Efectiva. Formación ejecutiva y personal.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Av. Larco 742, Miraflores",
+        "addressLocality": "Lima",
+        "addressRegion": "Lima",
+        "postalCode": "15074",
+        "addressCountry": "PE"
+      },
+      "telephone": "+51927873842",
+      "sameAs": [
+        "https://facebook.com/elartedehablarconpoder",
+        "https://instagram.com/elartedehablarconpoder"
+      ]
+    }
+    </script>
+</head>
+<body class="font-body text-brandDark bg-gray-50 flex flex-col min-h-screen relative overflow-x-hidden">
+
+    <!-- STICKY NAVBAR -->
+    <header id="main-header" class="fixed top-0 left-0 w-full z-40 bg-brandBlue/90 backdrop-blur-md border-b border-white/10 shadow-md transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="#inicio" class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-lg bg-gradient-gold flex items-center justify-center shadow-lg">
+                    <i class="fa-solid fa-microphone-lines text-brandBlue text-xl"></i>
+                </div>
+                <div>
+                    <span class="font-title font-bold text-white text-base sm:text-lg tracking-wide block leading-none">EL ARTE DE HABLAR</span>
+                    <span class="font-title font-semibold text-brandGold text-xs tracking-widest block leading-none mt-1">CON PODER</span>
+                </div>
+            </a>
+
+            <!-- Mobile Menu Toggle Button -->
+            <button id="mobile-menu-btn" class="lg:hidden text-white hover:text-brandGold focus:outline-none" aria-label="Abrir menú">
+                <i class="fa-solid fa-bars text-2xl"></i>
+            </button>
+
+            <!-- Desktop Nav Menu -->
+            <nav class="hidden lg:flex items-center space-x-6 text-sm font-semibold">
+                <a href="#inicio" class="text-white/80 hover:text-brandGold transition-colors py-2 px-1 nav-link">Inicio</a>
+                <a href="#nosotros" class="text-white/80 hover:text-brandGold transition-colors py-2 px-1 nav-link">Nosotros</a>
+                <a href="#programa" class="text-white/80 hover:text-brandGold transition-colors py-2 px-1 nav-link">Programa</a>
+                <a href="#horarios" class="text-white/80 hover:text-brandGold transition-colors py-2 px-1 nav-link">Horarios</a>
+                <a href="#matriculas" class="text-white/80 hover:text-brandGold transition-colors py-2 px-1 nav-link">Matrículas</a>
+                <a href="#galeria" class="text-white/80 hover:text-brandGold transition-colors py-2 px-1 nav-link">Galería</a>
+                <a href="#testimonios" class="text-white/80 hover:text-brandGold transition-colors py-2 px-1 nav-link">Testimonios</a>
+                <a href="#contacto" class="text-white/80 hover:text-brandGold transition-colors py-2 px-1 nav-link mr-4">Contacto</a>
+                
+                <a href="#login-view" id="nav-login-btn" class="bg-gradient-gold text-brandBlue font-bold py-2 px-5 rounded-full hover:scale-105 transition-transform duration-300 shadow-md flex items-center space-x-2">
+                    <i class="fa-solid fa-user-graduate"></i>
+                    <span>Aula Virtual</span>
+                </a>
+            </nav>
+        </div>
+
+        <!-- Mobile Nav Menu Dropdown -->
+        <nav id="mobile-menu" class="hidden lg:hidden bg-brandBlue/98 border-t border-white/10 px-4 py-6 flex flex-col space-y-4 shadow-xl">
+            <a href="#inicio" class="text-white hover:text-brandGold transition-colors block text-base nav-link">Inicio</a>
+            <a href="#nosotros" class="text-white hover:text-brandGold transition-colors block text-base nav-link">Nosotros</a>
+            <a href="#programa" class="text-white hover:text-brandGold transition-colors block text-base nav-link">Programa</a>
+            <a href="#horarios" class="text-white hover:text-brandGold transition-colors block text-base nav-link">Horarios</a>
+            <a href="#matriculas" class="text-white hover:text-brandGold transition-colors block text-base nav-link">Matrículas</a>
+            <a href="#galeria" class="text-white hover:text-brandGold transition-colors block text-base nav-link">Galería</a>
+            <a href="#testimonios" class="text-white hover:text-brandGold transition-colors block text-base nav-link">Testimonios</a>
+            <a href="#contacto" class="text-white hover:text-brandGold transition-colors block text-base nav-link">Contacto</a>
+            <a href="#login-view" class="bg-gradient-gold text-brandBlue font-bold py-3 px-5 rounded-xl block text-center shadow-md text-base">
+                <i class="fa-solid fa-user-graduate mr-2"></i> Aula Virtual
+            </a>
+        </nav>
+    </header>
+
+    <main class="flex-grow pt-20">
+
+        <!-- HERO SECTION -->
+        <section id="inicio" class="relative min-h-screen flex items-center justify-center overflow-hidden bg-slate-900 py-24 sm:py-32">
+            <!-- Video background (loopeado y silenciado) -->
+            <div class="absolute inset-0 w-full h-full object-cover pointer-events-none z-0">
+                <video autoplay loop muted playsinline class="w-full h-full object-cover">
+                    <source src="https://player.vimeo.com/external/371433846.sd.mp4?s=236da2f3c045f443f890d091c90f2d1a&profile_id=139&oauth2_token_id=57447761" type="video/mp4">
+                    <!-- Backup CSS Gradient if video fails -->
+                </video>
+            </div>
+            <!-- Dark Overlay -->
+            <div class="absolute inset-0 bg-brandBlue/75 mix-blend-multiply z-10"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-brandBlue/40 to-slate-950/80 z-10"></div>
+
+            <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-20 text-center text-white animate-fade-in-up">
+                <div class="inline-flex items-center space-x-2 bg-brandGold/20 border border-brandGold/40 text-brandGold font-semibold text-xs sm:text-sm px-4 py-2 rounded-full mb-8">
+                    <i class="fa-solid fa-star-of-life animate-spin text-[10px]"></i>
+                    <span>FORMACIÓN PREMIUM LÍDER EN LATINOAMÉRICA</span>
+                </div>
+
+                <h1 class="font-title text-3xl sm:text-5xl lg:text-7xl font-extrabold tracking-tight max-w-5xl mx-auto leading-tight">
+                    DESARROLLA EL PODER DE TU VOZ Y <span class="text-gradient-gold block sm:inline">TRANSFORMA TU FUTURO</span>
+                </h1>
+                
+                <p class="font-body text-base sm:text-lg lg:text-xl text-white/80 max-w-3xl mx-auto mt-6">
+                    Aprende a comunicarte con seguridad, liderazgo e impacto a través de nuestro programa especializado de oratoria y expresión ejecutiva.
+                </p>
+
+                <!-- CTA Buttons -->
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10">
+                    <a href="#matriculas" class="btn-premium w-full sm:w-auto bg-gradient-gold text-brandBlue font-extrabold px-8 py-4 rounded-full shadow-lg text-base">
+                        Matricularme Ahora <i class="fa-solid fa-arrow-right ml-2"></i>
+                    </a>
+                    <a href="#horarios" class="w-full sm:w-auto bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold px-8 py-4 rounded-full transition-all text-base">
+                        Ver Horarios
+                    </a>
+                    <a href="#contacto" class="w-full sm:w-auto text-white hover:text-brandGold transition-colors font-semibold flex items-center justify-center space-x-2 py-4">
+                        <span>Solicitar Información</span> <i class="fa-solid fa-circle-info"></i>
+                    </a>
+                </div>
+
+                <!-- Badges -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto mt-20 border-t border-white/10 pt-10">
+                    <div class="flex flex-col items-center bg-white/5 backdrop-blur-md rounded-xl p-4 border border-white/10">
+                        <i class="fa-solid fa-book-open text-brandGold text-2xl mb-2"></i>
+                        <span class="text-sm font-semibold text-white/90">8 Módulos</span>
+                        <span class="text-white/50 text-[10px] uppercase tracking-wider">Plan académico</span>
+                    </div>
+                    <div class="flex flex-col items-center bg-white/5 backdrop-blur-md rounded-xl p-4 border border-white/10">
+                        <i class="fa-solid fa-award text-brandGold text-2xl mb-2"></i>
+                        <span class="text-sm font-semibold text-white/90">Certificación Oficial</span>
+                        <span class="text-white/50 text-[10px] uppercase tracking-wider">Incluida al finalizar</span>
+                    </div>
+                    <div class="flex flex-col items-center bg-white/5 backdrop-blur-md rounded-xl p-4 border border-white/10">
+                        <i class="fa-solid fa-calendar-check text-brandGold text-2xl mb-2"></i>
+                        <span class="text-sm font-semibold text-white/90">Horarios Flexibles</span>
+                        <span class="text-white/50 text-[10px] uppercase tracking-wider">Fines de semana y días de semana</span>
+                    </div>
+                    <div class="flex flex-col items-center bg-white/5 backdrop-blur-md rounded-xl p-4 border border-white/10">
+                        <i class="fa-solid fa-users-viewfinder text-brandGold text-2xl mb-2"></i>
+                        <span class="text-sm font-semibold text-white/90">100% Práctico</span>
+                        <span class="text-white/50 text-[10px] uppercase tracking-wider">Simulaciones reales</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN NOSOTROS -->
+        <section id="nosotros" class="py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Section Header -->
+                <div class="text-center max-w-3xl mx-auto mb-20">
+                    <span class="text-brandBlueLight font-bold text-xs uppercase tracking-widest block mb-2">Quiénes Somos</span>
+                    <h2 class="font-title text-3xl sm:text-5xl font-extrabold text-brandBlue">LIDERANDO LA TRANSFORMACIÓN PERSONAL</h2>
+                    <div class="w-20 h-1.5 bg-brandGold mx-auto mt-4 rounded-full"></div>
+                </div>
+
+                <!-- Grid Mision, Vision, Historia -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div class="space-y-6">
+                        <h3 class="text-2xl font-bold text-brandBlue flex items-center space-x-3 border-l-4 border-brandGold pl-4">
+                            <span>Nuestra Historia</span>
+                        </h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Fundada con el firme propósito de democratizar la elocuencia y erradicar el miedo al escenario, la academia **El Arte de Hablar con Poder** ha capacitado a miles de profesionales, ejecutivos, políticos y estudiantes en América Latina. A través de una metodología activa y neuro-educativa, nos enfocamos en que cada participante descubra el poder de su personalidad lingüística.
+                        </p>
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8">
+                            <div class="bg-gray-50 p-6 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+                                <h4 class="font-bold text-brandBlue text-lg flex items-center space-x-2 mb-3">
+                                    <i class="fa-solid fa-bullseye text-brandGold"></i>
+                                    <span>Misión</span>
+                                </h4>
+                                <p class="text-sm text-gray-500">
+                                    Empoderar a las personas a través de la palabra, brindándoles herramientas científicas y prácticas para liderar, persuadir y comunicar con absoluta seguridad en cualquier auditorio.
+                                </p>
+                            </div>
+                            <div class="bg-gray-50 p-6 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+                                <h4 class="font-bold text-brandBlue text-lg flex items-center space-x-2 mb-3">
+                                    <i class="fa-solid fa-eye text-brandGold"></i>
+                                    <span>Visión</span>
+                                </h4>
+                                <p class="text-sm text-gray-500">
+                                    Ser reconocidos internacionalmente como la institución líder en el desarrollo de competencias de comunicación oral, oratoria moderna y liderazgo transformacional.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Visual Side and Core Values -->
+                    <div class="bg-gradient-premium rounded-2xl p-8 lg:p-12 text-white shadow-xl relative overflow-hidden">
+                        <!-- BG accent blobs -->
+                        <div class="absolute -top-10 -right-10 w-40 h-40 bg-brandBlueLight/20 rounded-full blur-2xl"></div>
+                        <div class="absolute -bottom-10 -left-10 w-45 h-45 bg-brandGold/15 rounded-full blur-2xl"></div>
+                        
+                        <h3 class="text-2xl font-title font-extrabold text-brandGold mb-6">Valores y Objetivos</h3>
+                        <div class="space-y-6 relative z-10">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center shrink-0">
+                                    <i class="fa-solid fa-shield-halved text-brandGold"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white">Confianza e Integridad</h4>
+                                    <p class="text-xs text-white/70 mt-1">Fomentamos un entorno de aprendizaje seguro y confidencial donde el error se valora como el primer peldaño del aprendizaje.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div class="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center shrink-0">
+                                    <i class="fa-solid fa-bolt text-brandGold"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white">Transformación Constante</h4>
+                                    <p class="text-xs text-white/70 mt-1">Nuestros métodos estimulan un cambio de mentalidad, forjando líderes proactivos y elocuentes.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div class="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center shrink-0">
+                                    <i class="fa-solid fa-users text-brandGold"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white">Excelencia Práctica</h4>
+                                    <p class="text-xs text-white/70 mt-1">El 80% del tiempo de formación se dedica a dinámicas grupales, discursos improvisados y talleres interactivos.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Animated Statistics Counters -->
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 mt-24 border-t border-gray-100 pt-16" id="stats-container">
+                    <div class="text-center p-4">
+                        <span class="text-brandBlue font-title font-extrabold text-4xl sm:text-5xl block" data-target="15000">+0</span>
+                        <span class="text-sm font-semibold text-gray-500 uppercase tracking-widest block mt-2">Alumnos Egresados</span>
+                    </div>
+                    <div class="text-center p-4">
+                        <span class="text-brandBlue font-title font-extrabold text-4xl sm:text-5xl block" data-target="12500">+0</span>
+                        <span class="text-sm font-semibold text-gray-500 uppercase tracking-widest block mt-2">Certificados Emitidos</span>
+                    </div>
+                    <div class="text-center p-4">
+                        <span class="text-brandBlue font-title font-extrabold text-4xl sm:text-5xl block" data-target="8000">+0</span>
+                        <span class="text-sm font-semibold text-gray-500 uppercase tracking-widest block mt-2">Horas Prácticas</span>
+                    </div>
+                    <div class="text-center p-4">
+                        <span class="text-brandBlue font-title font-extrabold text-4xl sm:text-5xl block" data-target="99">%0</span>
+                        <span class="text-sm font-semibold text-gray-500 uppercase tracking-widest block mt-2">Satisfacción Satisfecha</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROGRAMA ACADÉMICO -->
+        <section id="programa" class="py-24 bg-slate-900 text-white relative overflow-hidden">
+            <!-- Background lights -->
+            <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-brandBlueLight/10 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-brandGold/5 rounded-full blur-3xl"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <!-- Section Header -->
+                <div class="text-center max-w-3xl mx-auto mb-20">
+                    <span class="text-brandGold font-bold text-xs uppercase tracking-widest block mb-2">Plan de Estudios</span>
+                    <h2 class="font-title text-3xl sm:text-5xl font-extrabold text-white">NUESTRO PROGRAMA EN 8 MÓDULOS</h2>
+                    <div class="w-20 h-1.5 bg-brandGold mx-auto mt-4 rounded-full"></div>
+                </div>
+
+                <!-- Timeline Container -->
+                <div class="relative max-w-5xl mx-auto">
+                    <!-- Central Timeline Line -->
+                    <div class="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-white/10 transform -translate-x-1/2"></div>
+
+                    <!-- Módulo 1 -->
+                    <div class="timeline-item flex flex-col md:flex-row md:justify-between items-start md:items-center mb-16 relative">
+                        <div class="absolute left-4 md:left-1/2 w-8 h-8 rounded-full bg-brandGold border-4 border-slate-900 transform -translate-x-1/2 flex items-center justify-center shadow-lg z-20">
+                            <span class="text-xs text-brandBlue font-bold">1</span>
+                        </div>
+                        <div class="w-full md:w-[45%] pl-12 md:pl-0 md:text-right mt-1 md:mt-0">
+                            <div class="bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur-md hover:bg-white/10 hover:border-brandGold/40 transition-all shadow-md">
+                                <span class="text-xs font-semibold text-brandGold">Módulo 1</span>
+                                <h3 class="font-title text-xl font-bold mt-1">Introducción a la Oratoria</h3>
+                                <p class="text-sm text-white/70 mt-2">Bases históricas, estructura de la voz, cualidades de un gran orador y autoevaluación inicial de habilidades.</p>
+                            </div>
+                        </div>
+                        <div class="hidden md:block w-[45%]"></div>
+                    </div>
+
+                    <!-- Módulo 2 -->
+                    <div class="timeline-item flex flex-col md:flex-row md:justify-between items-start md:items-center mb-16 relative">
+                        <div class="absolute left-4 md:left-1/2 w-8 h-8 rounded-full bg-brandGold border-4 border-slate-900 transform -translate-x-1/2 flex items-center justify-center shadow-lg z-20">
+                            <span class="text-xs text-brandBlue font-bold">2</span>
+                        </div>
+                        <div class="hidden md:block w-[45%]"></div>
+                        <div class="w-full md:w-[45%] pl-12 md:pl-0 mt-1 md:mt-0">
+                            <div class="bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur-md hover:bg-white/10 hover:border-brandGold/40 transition-all shadow-md">
+                                <span class="text-xs font-semibold text-brandGold">Módulo 2</span>
+                                <h3 class="font-title text-xl font-bold mt-1">Control del Miedo Escénico</h3>
+                                <p class="text-sm text-white/70 mt-2">Técnicas de respiración diafragmática, control mental, manejo de cortisol y reprogramación del lenguaje corporal ante la presión.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Módulo 3 -->
+                    <div class="timeline-item flex flex-col md:flex-row md:justify-between items-start md:items-center mb-16 relative">
+                        <div class="absolute left-4 md:left-1/2 w-8 h-8 rounded-full bg-brandGold border-4 border-slate-900 transform -translate-x-1/2 flex items-center justify-center shadow-lg z-20">
+                            <span class="text-xs text-brandBlue font-bold">3</span>
+                        </div>
+                        <div class="w-full md:w-[45%] pl-12 md:pl-0 md:text-right mt-1 md:mt-0">
+                            <div class="bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur-md hover:bg-white/10 hover:border-brandGold/40 transition-all shadow-md">
+                                <span class="text-xs font-semibold text-brandGold">Módulo 3</span>
+                                <h3 class="font-title text-xl font-bold mt-1">Comunicación Verbal</h3>
+                                <p class="text-sm text-white/70 mt-2">Modulación de la voz, vocalización y dicción, tonos, ritmos, matices y eliminación de muletillas de expresión.</p>
+                            </div>
+                        </div>
+                        <div class="hidden md:block w-[45%]"></div>
+                    </div>
+
+                    <!-- Módulo 4 -->
+                    <div class="timeline-item flex flex-col md:flex-row md:justify-between items-start md:items-center mb-16 relative">
+                        <div class="absolute left-4 md:left-1/2 w-8 h-8 rounded-full bg-brandGold border-4 border-slate-900 transform -translate-x-1/2 flex items-center justify-center shadow-lg z-20">
+                            <span class="text-xs text-brandBlue font-bold">4</span>
+                        </div>
+                        <div class="hidden md:block w-[45%]"></div>
+                        <div class="w-full md:w-[45%] pl-12 md:pl-0 mt-1 md:mt-0">
+                            <div class="bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur-md hover:bg-white/10 hover:border-brandGold/40 transition-all shadow-md">
+                                <span class="text-xs font-semibold text-brandGold">Módulo 4</span>
+                                <h3 class="font-title text-xl font-bold mt-1">Comunicación No Verbal</h3>
+                                <p class="text-sm text-white/70 mt-2">Lenguaje corporal, gesticulación facial, microexpresiones, dominio de escenarios, uso de manos y contacto visual efectivo.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Módulo 5 -->
+                    <div class="timeline-item flex flex-col md:flex-row md:justify-between items-start md:items-center mb-16 relative">
+                        <div class="absolute left-4 md:left-1/2 w-8 h-8 rounded-full bg-brandGold border-4 border-slate-900 transform -translate-x-1/2 flex items-center justify-center shadow-lg z-20">
+                            <span class="text-xs text-brandBlue font-bold">5</span>
+                        </div>
+                        <div class="w-full md:w-[45%] pl-12 md:pl-0 md:text-right mt-1 md:mt-0">
+                            <div class="bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur-md hover:bg-white/10 hover:border-brandGold/40 transition-all shadow-md">
+                                <span class="text-xs font-semibold text-brandGold">Módulo 5</span>
+                                <h3 class="font-title text-xl font-bold mt-1">Técnicas de Persuasión</h3>
+                                <p class="text-sm text-white/70 mt-2">Estructuras de Storytelling, modelos de retórica clásica, psicología del público y técnicas de persuasión de alto nivel.</p>
+                            </div>
+                        </div>
+                        <div class="hidden md:block w-[45%]"></div>
+                    </div>
+
+                    <!-- Módulo 6 -->
+                    <div class="timeline-item flex flex-col md:flex-row md:justify-between items-start md:items-center mb-16 relative">
+                        <div class="absolute left-4 md:left-1/2 w-8 h-8 rounded-full bg-brandGold border-4 border-slate-900 transform -translate-x-1/2 flex items-center justify-center shadow-lg z-20">
+                            <span class="text-xs text-brandBlue font-bold">6</span>
+                        </div>
+                        <div class="hidden md:block w-[45%]"></div>
+                        <div class="w-full md:w-[45%] pl-12 md:pl-0 mt-1 md:mt-0">
+                            <div class="bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur-md hover:bg-white/10 hover:border-brandGold/40 transition-all shadow-md">
+                                <span class="text-xs font-semibold text-brandGold">Módulo 6</span>
+                                <h3 class="font-title text-xl font-bold mt-1">Presentaciones de Alto Impacto</h3>
+                                <p class="text-sm text-white/70 mt-2">Diseño visual de diapositivas, uso de tecnología, control técnico, improvisación y respuestas exitosas a preguntas complejas.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Módulo 7 -->
+                    <div class="timeline-item flex flex-col md:flex-row md:justify-between items-start md:items-center mb-16 relative">
+                        <div class="absolute left-4 md:left-1/2 w-8 h-8 rounded-full bg-brandGold border-4 border-slate-900 transform -translate-x-1/2 flex items-center justify-center shadow-lg z-20">
+                            <span class="text-xs text-brandBlue font-bold">7</span>
+                        </div>
+                        <div class="w-full md:w-[45%] pl-12 md:pl-0 md:text-right mt-1 md:mt-0">
+                            <div class="bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur-md hover:bg-white/10 hover:border-brandGold/40 transition-all shadow-md">
+                                <span class="text-xs font-semibold text-brandGold">Módulo 7</span>
+                                <h3 class="font-title text-xl font-bold mt-1">Liderazgo y Comunicación</h3>
+                                <p class="text-sm text-white/70 mt-2">Discursos corporativos y gubernamentales, manejo de crisis ante medios, asertividad y liderazgo de equipos inspirador.</p>
+                            </div>
+                        </div>
+                        <div class="hidden md:block w-[45%]"></div>
+                    </div>
+
+                    <!-- Módulo 8 -->
+                    <div class="timeline-item flex flex-col md:flex-row md:justify-between items-start md:items-center relative">
+                        <div class="absolute left-4 md:left-1/2 w-8 h-8 rounded-full bg-brandGold border-4 border-slate-900 transform -translate-x-1/2 flex items-center justify-center shadow-lg z-20">
+                            <span class="text-xs text-brandBlue font-bold">8</span>
+                        </div>
+                        <div class="hidden md:block w-[45%]"></div>
+                        <div class="w-full md:w-[45%] pl-12 md:pl-0 mt-1 md:mt-0">
+                            <div class="bg-gradient-gold text-brandBlue rounded-2xl p-6 shadow-xl">
+                                <span class="text-xs font-bold uppercase tracking-wider block">Módulo Final</span>
+                                <h3 class="font-title text-xl font-extrabold mt-1">Discurso Final y Certificación</h3>
+                                <p class="text-sm font-semibold mt-2">Presentación formal frente a un jurado externo, evaluación global en vivo y entrega solemne del Certificado de Acreditación.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- HORARIOS -->
+        <section id="horarios" class="py-24 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Section Header -->
+                <div class="text-center max-w-3xl mx-auto mb-20">
+                    <span class="text-brandBlueLight font-bold text-xs uppercase tracking-widest block mb-2">Nuestras Alternativas</span>
+                    <h2 class="font-title text-3xl sm:text-5xl font-extrabold text-brandBlue">HORARIOS Y GRUPOS DISPONIBLES</h2>
+                    <div class="w-20 h-1.5 bg-brandGold mx-auto mt-4 rounded-full"></div>
+                </div>
+
+                <!-- Groups Cards Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8" id="groups-container">
+                    <!-- Dynamically populated, with fallbacks -->
+                    <div class="bg-white rounded-2xl border border-gray-100 p-8 shadow-sm hover:shadow-xl transition-all hover:-translate-y-2 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-bold text-brandGold bg-brandBlue/10 px-3 py-1 rounded-full">Matutino</span>
+                            <h3 class="font-title font-bold text-xl text-brandBlue mt-4">Grupo 1</h3>
+                            <p class="text-sm text-gray-500 mt-2 font-semibold"><i class="fa-regular fa-clock mr-2 text-brandGold"></i> Martes y Jueves</p>
+                            <p class="text-xs text-gray-400 mt-1">4:00 PM - 7:30 PM</p>
+                        </div>
+                        <div class="mt-8">
+                            <div class="flex items-center justify-between text-xs font-bold text-gray-500 border-t border-gray-100 pt-4 mb-6">
+                                <span>CUPOS: <span class="text-brandBlue font-extrabold">22/25</span></span>
+                                <span class="text-green-500 flex items-center"><i class="fa-solid fa-circle text-[8px] mr-1.5 animate-pulse"></i> Disponible</span>
+                            </div>
+                            <a href="#matriculas" class="block text-center bg-brandBlue hover:bg-brandBlueLight text-white font-bold py-3 rounded-xl transition-colors">Inscribirme</a>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-2xl border border-gray-100 p-8 shadow-sm hover:shadow-xl transition-all hover:-translate-y-2 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-bold text-gray-400 bg-gray-100 px-3 py-1 rounded-full">Nocturno</span>
+                            <h3 class="font-title font-bold text-xl text-brandBlue mt-4">Grupo 2</h3>
+                            <p class="text-sm text-gray-500 mt-2 font-semibold"><i class="fa-regular fa-clock mr-2 text-brandGold"></i> Martes y Jueves</p>
+                            <p class="text-xs text-gray-400 mt-1">7:45 PM - 10:45 PM</p>
+                        </div>
+                        <div class="mt-8">
+                            <div class="flex items-center justify-between text-xs font-bold text-gray-500 border-t border-gray-100 pt-4 mb-6">
+                                <span>CUPOS: <span class="text-brandBlue font-extrabold">0/25</span></span>
+                                <span class="text-red-500 flex items-center"><i class="fa-solid fa-circle text-[8px] mr-1.5"></i> Lleno</span>
+                            </div>
+                            <button disabled class="w-full text-center bg-gray-200 text-gray-400 font-bold py-3 rounded-xl cursor-not-allowed">Sin Cupos</button>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-2xl border border-gray-100 p-8 shadow-sm hover:shadow-xl transition-all hover:-translate-y-2 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-bold text-brandGold bg-brandBlue/10 px-3 py-1 rounded-full">Fin de Semana</span>
+                            <h3 class="font-title font-bold text-xl text-brandBlue mt-4">Grupo 3</h3>
+                            <p class="text-sm text-gray-500 mt-2 font-semibold"><i class="fa-regular fa-clock mr-2 text-brandGold"></i> Sábado y Domingo</p>
+                            <p class="text-xs text-gray-400 mt-1">4:00 PM - 7:00 PM</p>
+                        </div>
+                        <div class="mt-8">
+                            <div class="flex items-center justify-between text-xs font-bold text-gray-500 border-t border-gray-100 pt-4 mb-6">
+                                <span>CUPOS: <span class="text-brandBlue font-extrabold">18/25</span></span>
+                                <span class="text-green-500 flex items-center"><i class="fa-solid fa-circle text-[8px] mr-1.5 animate-pulse"></i> Disponible</span>
+                            </div>
+                            <a href="#matriculas" class="block text-center bg-brandBlue hover:bg-brandBlueLight text-white font-bold py-3 rounded-xl transition-colors">Inscribirme</a>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-2xl border border-gray-100 p-8 shadow-sm hover:shadow-xl transition-all hover:-translate-y-2 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-bold text-brandGold bg-brandBlue/10 px-3 py-1 rounded-full">Semanal</span>
+                            <h3 class="font-title font-bold text-xl text-brandBlue mt-4">Grupo 4</h3>
+                            <p class="text-sm text-gray-500 mt-2 font-semibold"><i class="fa-regular fa-clock mr-2 text-brandGold"></i> Miércoles y Viernes</p>
+                            <p class="text-xs text-gray-400 mt-1">8:00 AM - 12:00 PM</p>
+                        </div>
+                        <div class="mt-8">
+                            <div class="flex items-center justify-between text-xs font-bold text-gray-500 border-t border-gray-100 pt-4 mb-6">
+                                <span>CUPOS: <span class="text-brandBlue font-extrabold">25/25</span></span>
+                                <span class="text-green-500 flex items-center"><i class="fa-solid fa-circle text-[8px] mr-1.5 animate-pulse"></i> Disponible</span>
+                            </div>
+                            <a href="#matriculas" class="block text-center bg-brandBlue hover:bg-brandBlueLight text-white font-bold py-3 rounded-xl transition-colors">Inscribirme</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MATRÍCULAS Y PAGOS + CALCULADORA -->
+        <section id="matriculas" class="py-24 bg-white relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Section Header -->
+                <div class="text-center max-w-3xl mx-auto mb-20">
+                    <span class="text-brandBlueLight font-bold text-xs uppercase tracking-widest block mb-2">Inversión y Matrícula</span>
+                    <h2 class="font-title text-3xl sm:text-5xl font-extrabold text-brandBlue">PLANES Y SIMULADOR DE CUOTAS</h2>
+                    <div class="w-20 h-1.5 bg-brandGold mx-auto mt-4 rounded-full"></div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
+                    
+                    <!-- Plan Regular Card -->
+                    <div class="bg-white rounded-2xl border-2 border-gray-100 p-8 shadow-md hover:shadow-xl transition-all relative overflow-hidden flex flex-col justify-between min-h-[500px]">
+                        <div>
+                            <span class="text-xs font-extrabold text-brandBlue bg-gray-100 px-4 py-1.5 rounded-full uppercase tracking-wider">Plan Ejecutivo</span>
+                            <h3 class="font-title font-bold text-2xl text-brandBlue mt-6">Plan Regular</h3>
+                            <p class="text-gray-500 text-xs mt-2">Para profesionales, directivos y emprendedores.</p>
+                            <div class="flex items-baseline mt-6 mb-8">
+                                <span class="text-sm font-semibold text-gray-400">S/</span>
+                                <span class="text-brandBlue font-title font-extrabold text-5xl ml-1">497</span>
+                                <span class="text-xs text-gray-400 ml-2">pago único</span>
+                            </div>
+                            <ul class="space-y-4 text-sm text-gray-600 border-t border-gray-100 pt-6">
+                                <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i> Acceso a los 8 Módulos</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i> Certificado de Acreditación</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i> Acceso permanente al Aula Virtual</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i> Material educativo descargable</li>
+                            </ul>
+                        </div>
+                        <button onclick="openRegistrationModal('Plan Regular', 497)" class="mt-8 w-full text-center bg-brandBlue hover:bg-brandBlueLight text-white font-extrabold py-3.5 rounded-xl shadow-lg transition-colors">Elegir Plan Regular</button>
+                    </div>
+
+                    <!-- Plan Estudiante Card -->
+                    <div class="bg-gradient-premium rounded-2xl p-8 shadow-xl relative overflow-hidden flex flex-col justify-between min-h-[500px] text-white">
+                        <div class="absolute top-0 right-0 w-24 h-24 bg-brandGold/20 rounded-full blur-xl"></div>
+                        <div>
+                            <span class="text-xs font-extrabold text-brandBlue bg-brandGold px-4 py-1.5 rounded-full uppercase tracking-wider">Plan Académico</span>
+                            <h3 class="font-title font-bold text-2xl text-brandGold mt-6">Plan Estudiante</h3>
+                            <p class="text-white/60 text-xs mt-2">Tarifa corporativa con carnet de estudios vigente.</p>
+                            <div class="flex items-baseline mt-6 mb-8">
+                                <span class="text-sm font-semibold text-white/50">S/</span>
+                                <span class="text-brandGold font-title font-extrabold text-5xl ml-1">397</span>
+                                <span class="text-xs text-white/50 ml-2">pago único</span>
+                            </div>
+                            <ul class="space-y-4 text-sm text-white/80 border-t border-white/10 pt-6">
+                                <li class="flex items-center"><i class="fa-solid fa-check text-brandGold mr-2"></i> Acceso a los 8 Módulos</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-brandGold mr-2"></i> Certificado de Acreditación</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-brandGold mr-2"></i> Acceso permanente al Aula Virtual</li>
+                                <li class="flex items-center"><i class="fa-solid fa-check text-brandGold mr-2"></i> Requiere Carnet Universitario/Escolar</li>
+                            </ul>
+                        </div>
+                        <button onclick="openRegistrationModal('Plan Estudiante', 397)" class="mt-8 w-full text-center bg-gradient-gold text-brandBlue font-extrabold py-3.5 rounded-xl shadow-lg transition-transform hover:scale-105">Elegir Plan Estudiante</button>
+                    </div>
+
+                    <!-- Interactive Payments Calculator -->
+                    <div class="bg-gray-50 border border-gray-100 rounded-2xl p-8 shadow-sm flex flex-col justify-between min-h-[500px]">
+                        <div>
+                            <h3 class="font-title font-bold text-xl text-brandBlue mb-4 flex items-center space-x-2">
+                                <i class="fa-solid fa-calculator text-brandGold"></i>
+                                <span>Simulador de Cuotas</span>
+                            </h3>
+                            <p class="text-xs text-gray-400 mb-6">Simula tu plan de financiamiento en cuotas mensuales sin intereses.</p>
+                            
+                            <div class="space-y-4">
+                                <div>
+                                    <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Selecciona Plan</label>
+                                    <select id="calc-plan" class="w-full bg-white border border-gray-200 rounded-xl p-3 text-sm focus:outline-none focus:border-brandBlueLight font-semibold text-brandBlue" onchange="runSimulate()">
+                                        <option value="497" selected>Plan Regular (S/ 497)</option>
+                                        <option value="397">Plan Estudiante (S/ 397)</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Método de Pago</label>
+                                    <select id="calc-method" class="w-full bg-white border border-gray-200 rounded-xl p-3 text-sm focus:outline-none focus:border-brandBlueLight font-semibold text-brandBlue" onchange="runSimulate()">
+                                        <option value="Completo" selected>Pago Completo</option>
+                                        <option value="Cuotas">Financiado en 3 Cuotas</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Payment Simulation View -->
+                            <div class="bg-white border border-gray-100 rounded-xl p-4 mt-6" id="sim-plan-container">
+                                <span class="text-[10px] font-bold text-gray-400 uppercase tracking-widest block mb-2">Cronograma Estimado de Pagos</span>
+                                <div id="sim-plan-details" class="space-y-2">
+                                    <!-- Dynamic rows -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-8 border-t border-gray-100 pt-4 flex items-center justify-between text-xs text-gray-400">
+                            <span class="flex items-center"><i class="fa-solid fa-lock text-green-500 mr-1.5"></i> Transacciones Seguras</span>
+                            <span>Cero Intereses</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GALERÍA -->
+        <section id="galeria" class="py-24 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Section Header -->
+                <div class="text-center max-w-3xl mx-auto mb-20">
+                    <span class="text-brandBlueLight font-bold text-xs uppercase tracking-widest block mb-2">Nuestras Experiencias</span>
+                    <h2 class="font-title text-3xl sm:text-5xl font-extrabold text-brandBlue">GALERÍA DE LA ACADEMIA</h2>
+                    <div class="w-20 h-1.5 bg-brandGold mx-auto mt-4 rounded-full"></div>
+                </div>
+
+                <!-- Filters -->
+                <div class="flex items-center justify-center flex-wrap gap-2 sm:gap-4 mb-12">
+                    <button onclick="filterGallery('todo')" class="px-5 py-2 rounded-full font-semibold text-sm transition-all bg-brandBlue text-white shadow-md filter-btn" data-filter="todo">Todo</button>
+                    <button onclick="filterGallery('clases')" class="px-5 py-2 rounded-full font-semibold text-sm transition-all bg-white hover:bg-gray-100 text-brandBlue border border-gray-200 filter-btn" data-filter="clases">Clases</button>
+                    <button onclick="filterGallery('eventos')" class="px-5 py-2 rounded-full font-semibold text-sm transition-all bg-white hover:bg-gray-100 text-brandBlue border border-gray-200 filter-btn" data-filter="eventos">Eventos</button>
+                    <button onclick="filterGallery('exposiciones')" class="px-5 py-2 rounded-full font-semibold text-sm transition-all bg-white hover:bg-gray-100 text-brandBlue border border-gray-200 filter-btn" data-filter="exposiciones">Exposiciones</button>
+                    <button onclick="filterGallery('graduaciones')" class="px-5 py-2 rounded-full font-semibold text-sm transition-all bg-white hover:bg-gray-100 text-brandBlue border border-gray-200 filter-btn" data-filter="graduaciones">Graduaciones</button>
+                </div>
+
+                <!-- Gallery Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="gallery-grid">
+                    <!-- Image 1 -->
+                    <div class="gallery-item group relative overflow-hidden rounded-2xl shadow-md cursor-pointer" data-category="clases" onclick="openLightbox('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=800&q=80', 'Talleres prácticos de oratoria en nuestras aulas ejecutivas.')">
+                        <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=800&q=80" alt="Clase de Oratoria" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-brandBlue/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-6 text-center text-white">
+                            <div>
+                                <i class="fa-solid fa-magnifying-glass-plus text-3xl text-brandGold mb-2"></i>
+                                <h3 class="font-bold text-lg">Prácticas Dinámicas</h3>
+                                <p class="text-xs text-white/70 mt-1">Clases personalizadas y presenciales</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Image 2 -->
+                    <div class="gallery-item group relative overflow-hidden rounded-2xl shadow-md cursor-pointer" data-category="eventos" onclick="openLightbox('https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=800&q=80', 'Conferencias ejecutivas organizadas para networking internacional.')">
+                        <img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=800&q=80" alt="Conferencia" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-brandBlue/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-6 text-center text-white">
+                            <div>
+                                <i class="fa-solid fa-magnifying-glass-plus text-3xl text-brandGold mb-2"></i>
+                                <h3 class="font-bold text-lg">Conferencias Anuales</h3>
+                                <p class="text-xs text-white/70 mt-1">Liderazgo empresarial y político</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Image 3 -->
+                    <div class="gallery-item group relative overflow-hidden rounded-2xl shadow-md cursor-pointer" data-category="exposiciones" onclick="openLightbox('https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=800&q=80', 'Alumnos exponiendo discursos persuasivos ante audiencias reales.')">
+                        <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=800&q=80" alt="Exposiciones alumnos" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-brandBlue/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-6 text-center text-white">
+                            <div>
+                                <i class="fa-solid fa-magnifying-glass-plus text-3xl text-brandGold mb-2"></i>
+                                <h3 class="font-bold text-lg">Exposición Académica</h3>
+                                <p class="text-xs text-white/70 mt-1">Prácticas directas frente a jurados</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Image 4 -->
+                    <div class="gallery-item group relative overflow-hidden rounded-2xl shadow-md cursor-pointer" data-category="graduaciones" onclick="openLightbox('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=800&q=80', 'Graduación solemne del programa de Oratoria de Alto Impacto.')">
+                        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=800&q=80" alt="Graduacion de oratoria" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-brandBlue/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-6 text-center text-white">
+                            <div>
+                                <i class="fa-solid fa-magnifying-glass-plus text-3xl text-brandGold mb-2"></i>
+                                <h3 class="font-bold text-lg">Graduaciones Solemnes</h3>
+                                <p class="text-xs text-white/70 mt-1">Reconocimiento oficial</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Image 5 -->
+                    <div class="gallery-item group relative overflow-hidden rounded-2xl shadow-md cursor-pointer" data-category="clases" onclick="openLightbox('https://images.unsplash.com/photo-1531538606174-0f90ff5dce83?auto=format&fit=crop&w=800&q=80', 'Dinámicas grupales de debate y negociación ejecutiva.')">
+                        <img src="https://images.unsplash.com/photo-1531538606174-0f90ff5dce83?auto=format&fit=crop&w=800&q=80" alt="Clases y negociacion" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-brandBlue/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-6 text-center text-white">
+                            <div>
+                                <i class="fa-solid fa-magnifying-glass-plus text-3xl text-brandGold mb-2"></i>
+                                <h3 class="font-bold text-lg">Debates y Liderazgo</h3>
+                                <p class="text-xs text-white/70 mt-1">Formación y trabajo en equipo</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Image 6 -->
+                    <div class="gallery-item group relative overflow-hidden rounded-2xl shadow-md cursor-pointer" data-category="graduaciones" onclick="openLightbox('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=800&q=80', 'Celebrando el éxito de la promoción líder del año.')">
+                        <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=800&q=80" alt="Celebracion graduados" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-brandBlue/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-6 text-center text-white">
+                            <div>
+                                <i class="fa-solid fa-magnifying-glass-plus text-3xl text-brandGold mb-2"></i>
+                                <h3 class="font-bold text-lg">Éxito Profesional</h3>
+                                <p class="text-xs text-white/70 mt-1">Certificaciones que impulsan carreras</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TESTIMONIOS -->
+        <section id="testimonios" class="py-24 bg-brandBlue text-white relative overflow-hidden">
+            <!-- Background light -->
+            <div class="absolute top-1/2 left-1/2 w-full h-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-900/40 via-transparent to-transparent -translate-x-1/2 -translate-y-1/2"></div>
+            
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+                <!-- Section Header -->
+                <div class="max-w-3xl mx-auto mb-16">
+                    <span class="text-brandGold font-bold text-xs uppercase tracking-widest block mb-2">Testimonios Reales</span>
+                    <h2 class="font-title text-3xl sm:text-5xl font-extrabold text-white">OPINIONES DE EGRESADOS</h2>
+                    <div class="w-20 h-1.5 bg-brandGold mx-auto mt-4 rounded-full"></div>
+                </div>
+
+                <!-- Testimonials Slider Container -->
+                <div class="relative min-h-[320px] max-w-4xl mx-auto px-6 py-10 bg-white/5 border border-white/10 rounded-3xl backdrop-blur-md">
+                    <!-- Carousel Slide 1 -->
+                    <div class="testimonial-slide active transition-opacity duration-500 space-y-6">
+                        <div class="flex justify-center space-x-1 text-brandGold text-lg">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-lg md:text-xl italic font-light text-white/90 px-4 md:px-12 leading-relaxed">
+                            "Superar el miedo escénico era mi mayor reto profesional. Gracias al programa de oratoria de la academia, no solo logré dar discursos asertivos, sino que conseguí un ascenso inmediato a Directora de Proyectos en mi corporativo. ¡Totalmente recomendado!"
+                        </p>
+                        <div class="flex items-center justify-center space-x-4">
+                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&h=150&q=80" alt="Ing. Carolina Mendez" class="w-14 h-14 rounded-full object-cover border-2 border-brandGold">
+                            <div class="text-left">
+                                <span class="font-bold block text-sm">Ing. Carolina Méndez</span>
+                                <span class="text-xs text-white/50">Directora de Operaciones Tech</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide Navigation -->
+                    <div class="flex items-center justify-center space-x-3 mt-10">
+                        <button onclick="prevTestimonial()" class="w-10 h-10 rounded-full bg-white/10 hover:bg-brandGold hover:text-brandBlue transition-colors flex items-center justify-center text-white" aria-label="Anterior"><i class="fa-solid fa-chevron-left"></i></button>
+                        <button onclick="nextTestimonial()" class="w-10 h-10 rounded-full bg-white/10 hover:bg-brandGold hover:text-brandBlue transition-colors flex items-center justify-center text-white" aria-label="Siguiente"><i class="fa-solid fa-chevron-right"></i></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACTO -->
+        <section id="contacto" class="py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Section Header -->
+                <div class="text-center max-w-3xl mx-auto mb-20">
+                    <span class="text-brandBlueLight font-bold text-xs uppercase tracking-widest block mb-2">Comunícate</span>
+                    <h2 class="font-title text-3xl sm:text-5xl font-extrabold text-brandBlue">CONTACTO Y UBICACIÓN</h2>
+                    <div class="w-20 h-1.5 bg-brandGold mx-auto mt-4 rounded-full"></div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
+                    
+                    <!-- Contact Information -->
+                    <div class="bg-gray-50 border border-gray-100 rounded-3xl p-8 lg:p-12 flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-title font-bold text-2xl text-brandBlue mb-4">Información de Contacto</h3>
+                            <p class="text-sm text-gray-500 mb-8">Nuestras oficinas centrales están disponibles para atender consultas presenciales, llamadas y correos de lunes a viernes.</p>
+                            
+                            <div class="space-y-6">
+                                <div class="flex items-start space-x-4">
+                                    <div class="w-10 h-10 rounded-xl bg-brandBlue/10 flex items-center justify-center shrink-0">
+                                        <i class="fa-solid fa-map-location-dot text-brandBlue"></i>
+                                    </div>
+                                    <div>
+                                        <span class="text-xs font-bold text-gray-400 block uppercase">Dirección Física</span>
+                                        <span class="text-sm font-semibold text-brandBlue block mt-0.5">Av. Larco 742, Miraflores - Lima, Perú</span>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start space-x-4">
+                                    <div class="w-10 h-10 rounded-xl bg-brandBlue/10 flex items-center justify-center shrink-0">
+                                        <i class="fa-solid fa-phone-volume text-brandBlue"></i>
+                                    </div>
+                                    <div>
+                                        <span class="text-xs font-bold text-gray-400 block uppercase">Teléfonos</span>
+                                        <span class="text-sm font-semibold text-brandBlue block mt-0.5">+51 927 873 842 / (01) 456-7890</span>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start space-x-4">
+                                    <div class="w-10 h-10 rounded-xl bg-brandBlue/10 flex items-center justify-center shrink-0">
+                                        <i class="fa-solid fa-envelope-open-text text-brandBlue"></i>
+                                    </div>
+                                    <div>
+                                        <span class="text-xs font-bold text-gray-400 block uppercase">Correo Electrónico</span>
+                                        <span class="text-sm font-semibold text-brandBlue block mt-0.5">info@hablarconpoder.com</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Map Mock / Elegant visual representation -->
+                        <div class="mt-12 rounded-2xl overflow-hidden h-48 bg-slate-200 border border-gray-150 relative">
+                            <iframe class="w-full h-full grayscale" src="https://www.google.com/maps/embed?pb=!11m18!1m12!1m3!1d3900.865912444658!2d-77.03154868472535!3d-12.12134599141755!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c818816c1411%3A0xc3cf9c952dfa5472!2sAv.+Jos%C3%A9+Larco+742%2C+Miraflores+15074!5e0!3m2!1ses!2spe!4v1620000000000!5m2!1ses!2spe" allowfullscreen="" loading="lazy" style="border: 0;"></iframe>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form -->
+                    <div class="bg-white border border-gray-100 rounded-3xl p-8 lg:p-12 shadow-sm flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-title font-bold text-2xl text-brandBlue mb-4">Envíanos un Mensaje</h3>
+                            <p class="text-sm text-gray-500 mb-8">Completa el formulario y nos comunicaremos contigo en menos de 24 horas.</p>
+                            
+                            <form id="contact-form" class="space-y-6" onsubmit="handleContactSubmit(event)">
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                    <div>
+                                        <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Nombre Completo</label>
+                                        <input type="text" id="contact-name" required class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-sm focus:outline-none focus:border-brandBlueLight focus:bg-white transition-all text-brandBlue font-semibold">
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Teléfono</label>
+                                        <input type="tel" id="contact-phone" required class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-sm focus:outline-none focus:border-brandBlueLight focus:bg-white transition-all text-brandBlue font-semibold">
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Correo Electrónico</label>
+                                    <input type="email" id="contact-email" required class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-sm focus:outline-none focus:border-brandBlueLight focus:bg-white transition-all text-brandBlue font-semibold">
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Mensaje</label>
+                                    <textarea id="contact-message" rows="4" required class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-sm focus:outline-none focus:border-brandBlueLight focus:bg-white transition-all text-brandBlue font-semibold"></textarea>
+                                </div>
+                                
+                                <button type="submit" class="w-full bg-brandBlue hover:bg-brandBlueLight text-white font-extrabold py-3.5 rounded-xl shadow-lg transition-colors flex items-center justify-center space-x-2">
+                                    <i class="fa-solid fa-paper-plane"></i>
+                                    <span>Enviar Mensaje</span>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer id="main-footer" class="bg-slate-950 text-white pt-16 pb-8 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <!-- Branding Info -->
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-8 h-8 rounded bg-gradient-gold flex items-center justify-center shadow-lg">
+                            <i class="fa-solid fa-microphone-lines text-brandBlue text-base"></i>
+                        </div>
+                        <span class="font-title font-bold text-white text-base tracking-wider leading-none">EL ARTE DE HABLAR CON PODER</span>
+                    </div>
+                    <p class="text-xs text-white/50 leading-relaxed">
+                        Formación académica premium en oratoria, oratoria ejecutiva, retórica, neuro-oratoria y liderazgo. Transformamos vidas mediante el dominio de la expresión oral.
+                    </p>
+                </div>
+                <!-- Links -->
+                <div>
+                    <h4 class="font-title text-sm font-bold text-brandGold uppercase tracking-wider mb-4">La Academia</h4>
+                    <ul class="space-y-2 text-xs text-white/60">
+                        <li><a href="#nosotros" class="hover:text-brandGold transition-colors">Sobre Nosotros</a></li>
+                        <li><a href="#programa" class="hover:text-brandGold transition-colors">Plan Curricular</a></li>
+                        <li><a href="#horarios" class="hover:text-brandGold transition-colors">Horarios de Grupos</a></li>
+                        <li><a href="#galeria" class="hover:text-brandGold transition-colors">Galería Fotográfica</a></li>
+                    </ul>
+                </div>
+                <!-- Support -->
+                <div>
+                    <h4 class="font-title text-sm font-bold text-brandGold uppercase tracking-wider mb-4">Matrícula y Soporte</h4>
+                    <ul class="space-y-2 text-xs text-white/60">
+                        <li><a href="#matriculas" class="hover:text-brandGold transition-colors">Planes y Precios</a></li>
+                        <li><a href="#contacto" class="hover:text-brandGold transition-colors">Oficinas y Soporte</a></li>
+                        <li><a href="#login-view" class="hover:text-brandGold transition-colors">Aula Virtual (Ingreso)</a></li>
+                    </ul>
+                </div>
+                <!-- Contacts Summary -->
+                <div>
+                    <h4 class="font-title text-sm font-bold text-brandGold uppercase tracking-wider mb-4">Contacto Directo</h4>
+                    <ul class="space-y-2 text-xs text-white/60">
+                        <li><i class="fa-solid fa-phone text-brandGold mr-2"></i> +51 927 873 842</li>
+                        <li><i class="fa-solid fa-envelope text-brandGold mr-2"></i> info@hablarconpoder.com</li>
+                        <li class="flex space-x-3 mt-4 text-base">
+                            <a href="https://facebook.com/elartedehablarconpoder" class="hover:text-brandGold transition-colors"><i class="fa-brands fa-facebook"></i></a>
+                            <a href="https://instagram.com/elartedehablarconpoder" class="hover:text-brandGold transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="https://wa.me/51927873842" class="hover:text-brandGold transition-colors"><i class="fa-brands fa-whatsapp"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/5 pt-8 text-center text-[10px] text-white/40 flex flex-col sm:flex-row justify-between items-center gap-4">
+                <span>&copy; 2026 Academia El Arte de Hablar con Poder. Todos los derechos reservados.</span>
+                <div class="flex space-x-4">
+                    <a href="#" class="hover:underline">Políticas de Privacidad</a>
+                    <a href="#" class="hover:underline">Términos del Servicio</a>
+                    <a href="#" class="hover:underline">Libro de Reclamaciones</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- AULA VIRTUAL OVERLAY PORTAL -->
+    <div id="portal-virtual" class="hidden fixed inset-0 z-50 bg-slate-900 overflow-y-auto text-slate-100 font-body">
+        <!-- Will be dynamically populated with Login Form or Dashboard depending on State -->
+    </div>
+
+    <!-- REGISTRATION MODAL -->
+    <div id="register-modal" class="hidden fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <!-- Will be dynamically populated for enrollment -->
+    </div>
+
+    <!-- LIGHTBOX MODAL -->
+    <div id="lightbox-modal" class="hidden fixed inset-0 z-50 bg-slate-950/95 backdrop-blur-md flex flex-col items-center justify-center p-4 cursor-zoom-out" onclick="closeLightbox()">
+        <button class="absolute top-6 right-6 text-white text-3xl hover:text-brandGold focus:outline-none"><i class="fa-solid fa-xmark"></i></button>
+        <img id="lightbox-img" src="" alt="Lightbox image" class="max-w-full max-h-[80vh] rounded-xl object-contain shadow-2xl">
+        <p id="lightbox-caption" class="text-sm font-semibold text-white/80 mt-4 text-center max-w-xl"></p>
+    </div>
+
+    <!-- FLOATING WHATSAPP BUTTON (pulse animation) -->
+    <a href="https://wa.me/51927873842?text=Hola,%20deseo%20informaci%C3%B3n%20sobre%20los%20cursos%20de%20oratoria%20de%20EL%20ARTE%20DE%20HABLAR%20CON%20PODER." target="_blank" class="whatsapp-float fixed bottom-6 right-6 z-30 w-14 h-14 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-xl text-2xl hover:scale-105 transition-transform" aria-label="Escríbenos por WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- Custom JavaScript App -->
+    <script src="js/app.js"></script>
+</body>
+</html>

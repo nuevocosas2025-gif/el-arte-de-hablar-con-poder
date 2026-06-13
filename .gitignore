@@ -1,0 +1,42 @@
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Mono auto-generated files
+mono_crash.*
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Aa]rm/
+[Aa]rm64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Log]/
+[Log]s/
+
+# Visual Studio 2015/2017 cache/options directory
+.vs/
+# Uncomment if needed, or if you using personal settings for teams
+#ShaderCache/
+
+# MSTest test Results
+[Tt]est[Rr]esult*/
+[Bb]uild[Cc]oformance/
+
+# NUNIT
+/*.VisualState.xml
+
+# Rider
+.idea/
+
+# Vercel
+.vercel
