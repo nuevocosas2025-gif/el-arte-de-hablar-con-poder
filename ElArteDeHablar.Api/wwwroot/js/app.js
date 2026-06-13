@@ -418,15 +418,15 @@ function openRegistrationModal(planName, priceOrGroupId) {
                         <input type="email" id="reg-email" required class="w-full bg-white/5 border border-white/10 rounded-xl p-3 text-sm focus:outline-none focus:border-brandGold text-white font-semibold">
                     </div>
                     <div>
-                        <label class="block text-[10px] font-bold text-white/60 uppercase tracking-wider mb-1">Celular / Teléfono</label>
+                        <label class="block text-[10px] font-bold text-white/60 uppercase tracking-wider mb-1">Número de Celular</label>
                         <input type="tel" id="reg-phone" required class="w-full bg-white/5 border border-white/10 rounded-xl p-3 text-sm focus:outline-none focus:border-brandGold text-white font-semibold">
                     </div>
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                        <label class="block text-[10px] font-bold text-white/60 uppercase tracking-wider mb-1">Contraseña del Aula Virtual</label>
-                        <input type="password" id="reg-password" required class="w-full bg-white/5 border border-white/10 rounded-xl p-3 text-sm focus:outline-none focus:border-brandGold text-white font-semibold">
+                        <label class="block text-[10px] font-bold text-white/60 uppercase tracking-wider mb-1">Dirección Física</label>
+                        <input type="text" id="reg-address" required value="Parque Central, Jaén" class="w-full bg-white/5 border border-white/10 rounded-xl p-3 text-sm focus:outline-none focus:border-brandGold text-white font-semibold">
                     </div>
                     <div>
                         <label class="block text-[10px] font-bold text-white/60 uppercase tracking-wider mb-1">Grupo de Estudio</label>
@@ -472,11 +472,12 @@ async function handleRegistrationSubmit(e, planName, price) {
     const name = document.getElementById('reg-name').value;
     const email = document.getElementById('reg-email').value;
     const phone = document.getElementById('reg-phone').value;
-    const password = document.getElementById('reg-password').value;
+    const password = "Student123!"; // Default password since it is removed from UI
+    const address = document.getElementById('reg-address').value;
     const groupId = document.getElementById('reg-group').value;
     const paymentMethod = document.getElementById('reg-method').value;
 
-    const payload = { name, email, phone, password, groupId, planName, paymentMethod, price };
+    const payload = { name, email, phone, password, address, groupId, planName, paymentMethod, price };
 
     try {
         const res = await fetch(`${state.apiBase}/api/students/register`, {
